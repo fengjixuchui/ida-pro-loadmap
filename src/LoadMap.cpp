@@ -427,7 +427,7 @@ bool idaapi run(size_t)
             ea_t la = sym.addr + getnseg((int) sym.seg)->start_ea;
             flags_t f = get_full_flags(la);
 
-            bool didOk;
+            bool didOk = false;
             if (bNameApply) // Apply symbols for name
             {
                 //  Add name if there's no meaningful name assigned.
