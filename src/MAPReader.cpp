@@ -256,6 +256,11 @@ MapFile::ParseResult MapFile::parseMsSymbolLine(MapFile::MAPSymbol &sym, const c
     if (lineCut > MAXNAMELEN + minLineLen)
         lineCut = MAXNAMELEN + minLineLen;
     char * dupLine = (char *)std::malloc(lineCut+1);
+
+    if (dupLine == NULL)
+    {
+        return MapFile::SKIP_LINE;
+    }
     strncpy(dupLine,pLine,lineCut);
     dupLine[lineCut] = '\0';
     if (strncasecmp(dupLine, ";", 1) == 0)
@@ -307,6 +312,11 @@ MapFile::ParseResult MapFile::parseWatcomSymbolLine(MapFile::MAPSymbol &sym, con
     if (lineCut > MAXNAMELEN + minLineLen)
         lineCut = MAXNAMELEN + minLineLen;
     char * dupLine = (char *)std::malloc(lineCut+1);
+
+    if (dupLine == NULL)
+    {
+        return MapFile::SKIP_LINE;
+    }
     strncpy(dupLine,pLine,lineCut);
     dupLine[lineCut] = '\0';
     if (strncasecmp(dupLine, ";", 1) == 0)
@@ -369,6 +379,11 @@ MapFile::ParseResult MapFile::parseGccSymbolLine(MapFile::MAPSymbol &sym, const 
     if (lineCut > MAXNAMELEN + minLineLen)
         lineCut = MAXNAMELEN + minLineLen;
     char * dupLine = (char *)std::malloc(lineCut+1);
+
+    if (dupLine == NULL)
+    {
+        return MapFile::SKIP_LINE;
+    }
     strncpy(dupLine,pLine,lineCut);
     dupLine[lineCut] = '\0';
     if (strncasecmp(dupLine, ";", 1) == 0)
